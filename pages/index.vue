@@ -1,7 +1,7 @@
 <template>
   <main>
     <v-card-title primary-title>
-      Hola
+      index.vue
     </v-card-title>
   </main>
 </template>
