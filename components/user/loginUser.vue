@@ -72,7 +72,7 @@ export default {
         password: this.password
       }
       // for it to take default rute written in editorconfig
-      this.$axios().post('/login', body)
+      this.$axios.post('/login', body)
         .then((res) => {
           // console.log('res => ', res)
           if (res.data && res.data.token) {
