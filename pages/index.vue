@@ -1,13 +1,16 @@
 <template>
-  <main>
-    <v-card-title primary-title>
-      index.vue
-    </v-card-title>
-  </main>
+  <v-row justify="center" align="center">
+    <loginUser />
+  </v-row>
 </template>
 
 <script>
+import loginUser from '@/components/user/loginUser.vue'
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  components: {
+    loginUser
+  },
+  layout: 'login'
 }
 </script>
