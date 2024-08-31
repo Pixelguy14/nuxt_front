@@ -45,12 +45,12 @@
           </v-icon>
         </v-btn>
       </v-row>
-      Botones
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import Cookies from 'js-cookie'
 export default {
   name: 'LoginUser',
   data () {
@@ -74,9 +74,10 @@ export default {
       // for it to take default rute written in editorconfig
       this.$axios.post('/login', body)
         .then((res) => {
-          // console.log('res => ', res)
           if (res.data && res.data.token) {
-            // console.log('token => ', res.data.token)
+            Cookies.set('token', res.data.token, { expires: 1 }, { path: '/' })
+            // localStorage.setItem('token', res.data.token)
+            // Cookies.remove('token') // With this you can delete the created token
             this.$router.push('/dashboard')
           }
         })

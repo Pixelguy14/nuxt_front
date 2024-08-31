@@ -11,6 +11,9 @@ export default {
   components: {
     loginUser
   },
-  layout: 'login'
+  layout: 'login',
+  middleware: 'detect-push',
+  mounted () {
+  }
 }
 </script>
