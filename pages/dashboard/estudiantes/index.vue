@@ -1,12 +1,18 @@
 <template>
   <div>
-    <h1> Se inicio secion usando el backend</h1>
+    <v-row align="center" justify="center">
+      <estudiantes-crud />
+    </v-row>
   </div>
 </template>
 
 <script>
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie' // same script as index.vue from dashboard
+import estudiantesCrud from '@/components/user/estudiantesCrud.vue'
 export default {
+  components: {
+    estudiantesCrud
+  },
   middleware: 'detect-push',
   mounted () {
     // const token = localStorage.getItem('token')
@@ -18,3 +24,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>
