@@ -1,17 +1,17 @@
 <template>
   <div>
     <v-row align="center" justify="center">
-      <estudiantes-crud />
+      <estudianteCrud />
     </v-row>
   </div>
 </template>
 
 <script>
 import Cookies from 'js-cookie' // same script as index.vue from dashboard
-import estudiantesCrud from '@/components/user/estudiantesCrud.vue'
+import estudianteCrud from '@/components/user/estudiantesCrud.vue'
 export default {
   components: {
-    estudiantesCrud
+    estudianteCrud
   },
   middleware: 'detect-push',
   mounted () {
