@@ -74,7 +74,9 @@ export default {
         }
       }).then((res) => {
         console.log('res => ', res.data)
-        this.estudiantes = res.data.estudiantes
+        if (res.data.message === 'success') {
+          this.estudiantes = res.data.estudiantes
+        }
       }).catch((error) => {
         console.log('error => ', error)
       })
