@@ -5,30 +5,29 @@
         Bienvenido
       </p>
     </v-card-title>
-    <v-row style="width: 100%">
-      <v-text-field
-        v-model="usuario"
-        label="Usuario"
-        placeholder="Escribe tu usuario"
-        filled
-        rounded
-        dense
-      />
-    </v-row>
-    <v-row style="width: 100%">
-      <v-text-field
-        v-model="password"
-        label="Contraseña"
-        placeholder="Escribe tu contraseña"
-        filled
-        rounded
-        dense
-        type="password"
-        :rules="[emptyField, specialChars, sizePassword]"
-      />
-    </v-row>
     <v-card-text>
-      Opciones
+      <v-row style="width: 100%">
+        <v-text-field
+          v-model="usuario"
+          label="Usuario"
+          placeholder="Escribe tu usuario"
+          filled
+          rounded
+          dense
+        />
+      </v-row>
+      <v-row style="width: 100%">
+        <v-text-field
+          v-model="password"
+          label="Contraseña"
+          placeholder="Escribe tu contraseña"
+          filled
+          rounded
+          dense
+          type="password"
+          :rules="[emptyField, specialChars, sizePassword]"
+        />
+      </v-row>
     </v-card-text>
     <v-card-actions>
       <v-row align="center" justify="center" style="width: 100%" class="mb-2 mt-2">
