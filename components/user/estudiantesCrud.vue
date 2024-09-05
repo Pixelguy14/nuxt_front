@@ -2,10 +2,19 @@
   <div>
     <v-row>
       <v-spacer />
-      <v-btn @click="showDialog = true">
+      <v-btn
+        color="primary"
+        dark
+        class="ma-2"
+        @click="showDialog = true"
+      >
+        <v-icon left>
+          mdi-account-plus
+        </v-icon>
         Crear Estudiante
       </v-btn>
     </v-row>
+    <!--data table-->
     <v-row align="center" justify="center">
       <v-data-table
         :headers="headers"
@@ -43,88 +52,99 @@
         </template>
       </v-data-table>
     </v-row>
+    <!-- dialog de creacion-->
     <v-dialog
       v-model="showDialog"
-      width="500"
+      width="600"
       persistent
     >
       <v-card>
         <v-card-title>Crear un Estudiante</v-card-title>
         <v-card-text>
           <v-form ref="formCreate">
-            <v-row align="center" justify="center">
-              <v-text-field
-                v-model="nombre"
-                placeholder="Ingrese un Nombre"
-                label="Nombre"
-                solo
-                filled
-              />
-            </v-row>
-            <v-row align="center" justify="center">
-              <v-text-field
-                v-model="apaterno"
-                placeholder="Ingrese un Apellido Paterno"
-                label="Apellido Paterno"
-                solo
-                filled
-              />
-            </v-row>
-            <v-row align="center" justify="center">
-              <v-text-field
-                v-model="amaterno"
-                placeholder="Ingrese un Apellido Materno"
-                label="Apellido Materno"
-                solo
-                filled
-              />
-            </v-row>
-            <v-row align="center" justify="center">
-              <v-text-field
-                v-model="direccion"
-                placeholder="Ingrese una Direccion"
-                label="Direccion"
-                solo
-                filled
-              />
-            </v-row>
-            <v-row align="center" justify="center">
-              <v-text-field
-                v-model="telefono"
-                placeholder="Ingrese un Telefono"
-                label="Telefono"
-                solo
-                filled
-              />
-            </v-row>
-            <v-row align="center" justify="center">
-              <v-text-field
-                v-model="correo"
-                placeholder="Ingrese un Correo"
-                label="Correo"
-                solo
-                filled
-              />
-            </v-row>
-            <v-row align="center" justify="center">
-              <v-text-field
-                v-model="usuario"
-                placeholder="Ingrese un Usuario"
-                label="Usuario"
-                solo
-                filled
-              />
-            </v-row>
-            <v-row align="center" justify="center">
-              <v-text-field
-                v-model="password"
-                placeholder="Ingrese una contraseña"
-                label="Contraseña"
-                solo
-                filled
-                type="password"
-              />
-            </v-row>
+            <v-container>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="nombre"
+                    placeholder="Ingrese un Nombre"
+                    label="Nombre"
+                    solo
+                    filled
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="apaterno"
+                    placeholder="Ingrese un Apellido Paterno"
+                    label="Apellido Paterno"
+                    solo
+                    filled
+                  />
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="amaterno"
+                    placeholder="Ingrese un Apellido Materno"
+                    label="Apellido Materno"
+                    solo
+                    filled
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="direccion"
+                    placeholder="Ingrese una Dirección"
+                    label="Dirección"
+                    solo
+                    filled
+                  />
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="telefono"
+                    placeholder="Ingrese un Teléfono"
+                    label="Teléfono"
+                    solo
+                    filled
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="correo"
+                    placeholder="Ingrese un Correo"
+                    label="Correo"
+                    solo
+                    filled
+                  />
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="usuario"
+                    placeholder="Ingrese un Usuario"
+                    label="Usuario"
+                    solo
+                    filled
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="password"
+                    placeholder="Ingrese una Contraseña"
+                    label="Contraseña"
+                    solo
+                    filled
+                    type="password"
+                  />
+                </v-col>
+              </v-row>
+            </v-container>
           </v-form>
         </v-card-text>
         <v-card-actions>
@@ -134,6 +154,115 @@
             </v-btn>
             <v-btn @click="createEstudiante">
               Agregar
+            </v-btn>
+          </v-row>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!-- dialog de modificacion-->
+    <v-dialog
+      v-model="showDialogActualizar"
+      width="600"
+      persistent
+    >
+      <v-card>
+        <v-card-title>Actualizar un Estudiante</v-card-title>
+        <v-card-text>
+          <v-form ref="formUpdate">
+            <v-container>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="estudiante.nombre"
+                    placeholder="Ingrese un Nombre"
+                    label="Nombre"
+                    solo
+                    filled
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="estudiante.apaterno"
+                    placeholder="Ingrese un Apellido Paterno"
+                    label="Apellido Paterno"
+                    solo
+                    filled
+                  />
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="estudiante.amaterno"
+                    placeholder="Ingrese un Apellido Materno"
+                    label="Apellido Materno"
+                    solo
+                    filled
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="estudiante.direccion"
+                    placeholder="Ingrese una Dirección"
+                    label="Dirección"
+                    solo
+                    filled
+                  />
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="estudiante.telefono"
+                    placeholder="Ingrese un Teléfono"
+                    label="Teléfono"
+                    solo
+                    filled
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="estudiante.correo"
+                    placeholder="Ingrese un Correo"
+                    label="Correo"
+                    disabled
+                    solo
+                    filled
+                  />
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="estudiante.usuario"
+                    placeholder="Ingrese un Usuario"
+                    label="Usuario"
+                    disabled
+                    solo
+                    filled
+                  />
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="estudiante.password"
+                    placeholder="Ingrese una Contraseña"
+                    label="Contraseña"
+                    solo
+                    filled
+                    type="password"
+                  />
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-row align="center" justify="center" class="mb-2">
+            <v-btn @click="showDialogActualizar = false">
+              Cancelar
+            </v-btn>
+            <v-btn @click="updateEstudiante">
+              Actualizar
             </v-btn>
           </v-row>
         </v-card-actions>
@@ -196,7 +325,9 @@ export default {
       correo: '',
       usuario: '',
       password: '',
-      token: null
+      token: null,
+      estudiante: {},
+      showDialogActualizar: false
     }
   },
   mounted () {
@@ -210,7 +341,7 @@ export default {
           Authorization: `Bearer ${this.token}`
         }
       }).then((res) => {
-        console.log('res => ', res.data)
+        // console.log('res => ', res.data)
         if (res && res.data && res.data.message === 'success') {
           this.estudiantes = res.data.estudiantes
         }
@@ -235,7 +366,7 @@ export default {
           'Content-Type': 'application/json'
         }
       }).then((res) => {
-        console.log('res => ', res.data)
+        // console.log('res => ', res.data)
         if (res && res.data && res.data.message === 'success') {
           this.loadEstudiantes()
           this.showDialog = false
@@ -253,6 +384,29 @@ export default {
         }
       }).then((res) => {
         this.loadEstudiantes()
+      }).catch((error) => {
+        console.log('error => ', error)
+      })
+    },
+    actualizar (item) {
+      this.estudiante = item
+      this.estudiante.password = ''
+      this.showDialogActualizar = true
+      // console.log("estudiante => ", this.estudiante)
+    },
+    updateEstudiante () {
+      this.$axios.put(`/estudiante/${this.estudiante.id}`, this.estudiante, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+          'Content-Type': 'application/json'
+        }
+      }).then((res) => {
+        // console.log('res => ', res.data)
+        if (res && res.data && res.data.message === 'success') {
+          this.loadEstudiantes()
+          this.estudiante = {}
+          this.showDialogActualizar = false
+        }
       }).catch((error) => {
         console.log('error => ', error)
       })

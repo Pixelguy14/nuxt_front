@@ -1,7 +1,9 @@
 <template>
-  <v-row justify="center" align="center">
-    <loginUser />
-  </v-row>
+  <div>
+    <v-row justify="center" align="center" class="mt-5">
+      <loginUser />
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -17,3 +19,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.mt-5 {
+  margin-top: 20px; /* Ajusta este valor según tus necesidades */
+}
+</style>

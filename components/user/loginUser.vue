@@ -1,39 +1,43 @@
 <template>
-  <v-card color="yellow darken-3" widht="400" elevation="0">
-    <v-card-title class="text-h4" color="deep-orange darken-4">
+  <v-card color="grey lighten-4" width="400" elevation="2">
+    <v-card-title class="text-h5" color="primary">
       <p class="text-center" style="width:100%;">
         Bienvenido
       </p>
     </v-card-title>
     <v-card-text>
-      <v-row style="width: 100%">
-        <v-text-field
-          v-model="usuario"
-          label="Usuario"
-          placeholder="Escribe tu usuario"
-          filled
-          rounded
-          dense
-        />
+      <v-row>
+        <v-col cols="12">
+          <v-text-field
+            v-model="usuario"
+            label="Usuario"
+            placeholder="Escribe tu usuario"
+            filled
+            rounded
+            dense
+          />
+        </v-col>
       </v-row>
-      <v-row style="width: 100%">
-        <v-text-field
-          v-model="password"
-          label="Contraseña"
-          placeholder="Escribe tu contraseña"
-          filled
-          rounded
-          dense
-          type="password"
-          :rules="[emptyField, specialChars, sizePassword]"
-        />
+      <v-row>
+        <v-col cols="12">
+          <v-text-field
+            v-model="password"
+            label="Contraseña"
+            placeholder="Escribe tu contraseña"
+            filled
+            rounded
+            dense
+            type="password"
+            :rules="[emptyField, specialChars, sizePassword]"
+          />
+        </v-col>
       </v-row>
     </v-card-text>
     <v-card-actions>
-      <v-row align="center" justify="center" style="width: 100%" class="mb-2 mt-2">
+      <v-row align="center" justify="center" class="mb-2 mt-2">
         <v-btn
-          elevation="0"
-          color="deep-orange darken-4"
+          elevation="2"
+          color="primary"
           @click="loginBackend"
         >
           <span style="text-transform: none; color: white;">

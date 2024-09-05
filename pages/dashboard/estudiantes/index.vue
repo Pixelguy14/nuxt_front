@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row align="center" justify="center">
+    <v-row align="center" justify="center" class="mt-5">
       <estudianteCrud />
     </v-row>
   </div>
@@ -26,5 +26,7 @@ export default {
 </script>
 
 <style scoped>
-
+.mt-5 {
+  margin-top: 10px; /* Ajusta este valor según tus necesidades */
+}
 </style>
